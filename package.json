@@ -1,7 +1,7 @@
 {
   "name": "artifact-metadata",
-  "version": "0.0.1",
-  "description": "A NodeJS module to store Issue and Pull Request metadata on GitHub as Artifacts.",
+  "version": "0.0.2",
+  "description": "NodeJS module to store Issues and Pull Requests metadata in GitHub Artifacts.",
   "main": "src/main.ts",
   "scripts": {
     "build": "tsc",
