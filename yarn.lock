@@ -1029,21 +1029,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"advanced-issue-labeler@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "advanced-issue-labeler@workspace:."
-  dependencies:
-    "@actions/artifact": "npm:^2.3.1"
-    "@types/node": "npm:^22.13.5"
-    "@vitest/coverage-v8": "npm:^3.0.7"
-    esbuild: "npm:^0.25.0"
-    prettier: "npm:^3.5.2"
-    typescript: "npm:^5.7.3"
-    vitest: "npm:^3.0.7"
-    zod: "npm:^3.24.2"
-  languageName: unknown
-  linkType: soft
-
 "agent-base@npm:^7.1.0, agent-base@npm:^7.1.2":
   version: 7.1.3
   resolution: "agent-base@npm:7.1.3"
@@ -1110,6 +1095,21 @@ __metadata:
   checksum: 10c0/02afd87ca16f6184f752db8e26884e6eff911c476812a0e7f7b26c4beb09f06119807f388a8e26ed2558aa8ba9db28646ebd147a4f99e46813b8b43158e1438e
   languageName: node
   linkType: hard
+
+"artifact-metadata@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "artifact-metadata@workspace:."
+  dependencies:
+    "@actions/artifact": "npm:^2.3.1"
+    "@types/node": "npm:^22.13.5"
+    "@vitest/coverage-v8": "npm:^3.0.7"
+    esbuild: "npm:^0.25.0"
+    prettier: "npm:^3.5.2"
+    typescript: "npm:^5.7.3"
+    vitest: "npm:^3.0.7"
+    zod: "npm:^3.24.2"
+  languageName: unknown
+  linkType: soft
 
 "assertion-error@npm:^2.0.1":
   version: 2.0.1
