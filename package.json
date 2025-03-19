@@ -9,10 +9,9 @@
     "build": "esbuild ./src/index.js --bundle --outdir=dist --platform=node --target=node20.0.0 --packages=bundle",
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
-    "package": "ncc build --source-map --license licenses.txt",
     "test": "vitest run --coverage",
     "update-snapshots": "vitest run --update",
-    "all": "yarn && yarn run build && yarn run format && yarn run package && yarn test"
+    "all": "yarn run build && yarn run format && yarn test"
   },
   "repository": {
     "type": "git",
@@ -27,7 +26,6 @@
   "author": "jamacku@redhat.com",
   "license": "MIT",
   "packageManager": "yarn@4.6.0",
-  "type": "module",
   "dependencies": {
     "@actions/artifact": "^2.3.1",
     "zod": "^3.24.2"
