@@ -93,9 +93,10 @@ export default class MetadataController {
         return newMetadata;
       }
 
-      writeFileSync(`${path}/${this.fileName}`, JSON.stringify(newMetadata));
       await this.artifactController.remove(artifactName);
     }
+
+    writeFileSync(`${path}/${this.fileName}`, JSON.stringify(newMetadata));
 
     await this.artifactController.upload(artifactName, [path]);
     return newMetadata;
