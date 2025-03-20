@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "esbuild ./src/index.js --bundle --outdir=dist --platform=node --target=node20.0.0 --packages=bundle",
+    "build": "esbuild ./src/index.js --bundle --outdir=dist --platform=node --target=node20.0.0 --packages=bundle && tsc --declaration src/index.ts --emitDeclarationOnly --skipLibCheck --outDir ./dist",
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
     "test": "vitest run --coverage",
