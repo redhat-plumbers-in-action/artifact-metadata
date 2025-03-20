@@ -45,9 +45,15 @@ export default class MetadataController {
 
     if (!artifact) return;
 
+    console.log(
+      `Downloading artifact: ${artifactName}: ${JSON.stringify(artifact)}`
+    );
+
     const { downloadPath } = await this.artifactController.download(
       artifact.id
     );
+
+    console.log(`Downloaded artifact to: ${downloadPath}`);
 
     if (!downloadPath) return;
 
