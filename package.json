@@ -1,6 +1,6 @@
 {
   "name": "artifact-metadata",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "NodeJS module to store Issues and Pull Requests metadata in GitHub Artifacts.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
