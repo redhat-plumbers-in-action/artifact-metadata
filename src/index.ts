@@ -74,6 +74,7 @@ export default class MetadataController {
     value?: string
   ): Promise<MetadataObject> {
     const artifactName = `${this.id}-${issue}`;
+    let oldMetadata: MetadataObject = {};
     let newMetadata: MetadataObject = {};
 
     const artifact = await this.artifactController.getByName(artifactName);
@@ -87,13 +88,16 @@ export default class MetadataController {
         `${downloadPath}/${this.fileName}`
       ).toString();
 
-      const parsedMetadata = metadataObjectSchema.parse(metadataRaw);
-      newMetadata = assignNewMetadata(parsedMetadata, key, value);
+      const oldMetadata = metadataObjectSchema.parse(metadataRaw);
+    }
 
-      if (JSON.stringify(parsedMetadata) === JSON.stringify(newMetadata)) {
-        return newMetadata;
-      }
+    newMetadata = assignNewMetadata(oldMetadata, key, value);
 
+    if (JSON.stringify(oldMetadata) === JSON.stringify(newMetadata)) {
+      return newMetadata;
+    }
+
+    if (artifact) {
       await this.artifactController.remove(artifactName);
     }
 
@@ -108,6 +112,7 @@ export default class MetadataController {
     await this.artifactController.upload(artifactName, [
       `${process.cwd()}/${this.fileName}`,
     ]);
+
     return newMetadata;
   }
 }
