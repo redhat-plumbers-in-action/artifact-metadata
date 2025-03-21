@@ -98,11 +98,16 @@ export default class MetadataController {
     }
 
     console.log(`Creating artifact: ${artifactName}`);
-    writeFileSync(`${this.fileName}`, JSON.stringify(newMetadata));
+    writeFileSync(
+      `${process.cwd()}/${this.fileName}`,
+      JSON.stringify(newMetadata)
+    );
 
     console.log('pwd', process.cwd());
 
-    await this.artifactController.upload(artifactName, [artifactName]);
+    await this.artifactController.upload(artifactName, [
+      `${process.cwd()}/${this.fileName}`,
+    ]);
     return newMetadata;
   }
 }
