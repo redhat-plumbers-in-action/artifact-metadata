@@ -74,7 +74,6 @@ export default class MetadataController {
     value?: string
   ): Promise<MetadataObject> {
     const artifactName = `${this.id}-${issue}`;
-    const path = `./${artifactName}`;
     let newMetadata: MetadataObject = {};
 
     const artifact = await this.artifactController.getByName(artifactName);
@@ -84,7 +83,9 @@ export default class MetadataController {
         artifact.id
       );
 
-      const metadataRaw = readFileSync(`${path}/${this.fileName}`).toString();
+      const metadataRaw = readFileSync(
+        `${downloadPath}/${this.fileName}`
+      ).toString();
 
       const parsedMetadata = metadataObjectSchema.parse(metadataRaw);
       newMetadata = assignNewMetadata(parsedMetadata, key, value);
@@ -96,9 +97,12 @@ export default class MetadataController {
       await this.artifactController.remove(artifactName);
     }
 
-    writeFileSync(`${path}/${this.fileName}`, JSON.stringify(newMetadata));
+    console.log(`Creating artifact: ${artifactName}`);
+    writeFileSync(`${this.fileName}`, JSON.stringify(newMetadata));
 
-    await this.artifactController.upload(artifactName, [path]);
+    console.log('pwd', process.cwd());
+
+    await this.artifactController.upload(artifactName, [artifactName]);
     return newMetadata;
   }
 }
