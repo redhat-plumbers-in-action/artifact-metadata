@@ -39,7 +39,6 @@ export default class MetadataController {
     key?: string
   ): Promise<MetadataObject | undefined> {
     const artifactName = `${this.id}-${issue}`;
-    const path = `./${artifactName}`;
 
     const artifact = await this.artifactController.getByName(artifactName);
 
@@ -57,7 +56,9 @@ export default class MetadataController {
 
     if (!downloadPath) return;
 
-    const metadataRaw = readFileSync(`${path}/${this.fileName}`).toString();
+    const metadataRaw = readFileSync(
+      `${process.cwd}/${this.fileName}`
+    ).toString();
 
     return parseMetadata(metadataRaw, key);
   }
